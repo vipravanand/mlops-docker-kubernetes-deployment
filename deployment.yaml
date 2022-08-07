@@ -1,0 +1,26 @@
+apiVersion : apps/v1
+kind : Deployment
+metadata : 
+  name : autoencodoer
+
+spec : 
+  replicas : 1
+  selector : 
+    matchLabels : 
+      app: autoencoder
+  template : 
+    metadata : 
+      labels : 
+        app : autoencoder
+    spec : 
+      containers :   
+      - name : autoencoder
+        image : gcr.io/ai-pipeline-297219/autoencoder
+        ports :
+        - containerPort : 8080
+        resources:
+          requests:
+            cpu: "2"
+            memory: 4Gi
+          
+
